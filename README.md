@@ -15,3 +15,5 @@ public class MyActivity extends Activity {
     }
 }
 ```
+
+https://github.com/kaiinui/note/blob/master/Android--Annotation.md
