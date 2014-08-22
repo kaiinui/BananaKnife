@@ -2,18 +2,30 @@ package com.kaiinui.sampleannotation;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+
 
 public class MyActivity extends Activity {
-    @InjectView(R.id.text_view) TextView textView;
+    @InjectView(R.id.text_view)
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        for (Field field : this.getClass().getDeclaredFields()) {
+            InjectView annotation = field.getAnnotation(InjectView.class);
+            Log.i("MyActivity", field.getName());
+            if (annotation != null){
+                int id = annotation.value();
+            }
+        }
     }
 
 
